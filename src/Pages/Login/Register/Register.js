@@ -7,6 +7,7 @@ import {
 import './Register.css';
 import auth from '../../../firebase.init';
 import { async } from '@firebase/util';
+import SocialLogin from '../SocialLogin/SocialLogin';
 const Register = () => {
   const [agree, setAgree] = useState(false);
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -75,7 +76,7 @@ const Register = () => {
           Please login
         </span>
       </p>
-      
+      <SocialLogin></SocialLogin>
     </div>
   );
 };
