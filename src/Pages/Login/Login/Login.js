@@ -1,9 +1,11 @@
 import { async } from '@firebase/util';
 import React, { useRef } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Col, Form, Row } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import icon from '../../../images/undraw_male_avatar_323b.svg'
+import ui from '../../../images/undraw_login_re_4vu2.svg'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -50,19 +52,22 @@ const Login = () => {
     }
 
   return (
-    <div className='container w-50 mx-auto mt-5'>
+    <div className='container text-center mt-5 p-3'>
       <h2 className='text-primary text-center'>Please Login</h2>
-      <Form onSubmit={handleSubmit}>
+     <Row>
+       <Col lg={4} md={6} sm={12} >
+         <img className='icon' src={icon} alt="" />
+       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          
           <Form.Control ref={emailRef} type="email" placeholder="Enter email" required/>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          
           <Form.Control ref={passwordRef} type="password" placeholder="Password" required/>
         </Form.Group>
-        <Button variant="primary w-50 mx-auto d-block mb-2" type="login">
+        <Button variant="primary w-100 mx-auto d-block mb-2" type="login">
           Login
         </Button>
       </Form>
@@ -71,6 +76,12 @@ const Login = () => {
       <p>Forget Password? <span className='register text-danger' onClick={resetPassword}>Reset Password</span></p>
       <SocialLogin></SocialLogin>
       <ToastContainer />
+       </Col>
+       <Col lg={8} md={6} sm={12} >
+         <img className='' src={ui} alt="" />
+       </Col>
+     </Row>
+      
     </div>
   );
 };

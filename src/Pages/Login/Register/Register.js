@@ -8,6 +8,8 @@ import './Register.css';
 import auth from '../../../firebase.init';
 import { async } from '@firebase/util';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import { Col, Row } from 'react-bootstrap';
+import regi from '../../../images/undraw_mobile_payments_re_7udl.svg'
 const Register = () => {
   const [agree, setAgree] = useState(false);
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -33,9 +35,11 @@ const Register = () => {
     navigate('/home')
   };
   return (
-    <div className="register-form">
+    <div className="register-form container text-center mt-5 p-3 ">
       <h2 className="text-center text-primary p-3">Please Register</h2>
-      <form onSubmit={handleRegister}>
+      <Row>
+        <Col lg={4} md={6} sm={12}>
+        <form onSubmit={handleRegister}>
         <input type="text" name="name" id="" placeholder="Your Name" />
         <input
           type="email"
@@ -65,11 +69,12 @@ const Register = () => {
         </label>
         <input
           disabled={!agree}
-          className="btn btn-primary w-50 mx-auto mt-2"
+          className="btn btn-primary w-100 mx-auto mt-2"
           type="submit"
           value="Register"
         />
       </form>
+
       <p>
         Already have an account?{' '}
         <span className="login text-danger" onClick={navigateLogin}>
@@ -77,6 +82,12 @@ const Register = () => {
         </span>
       </p>
       <SocialLogin></SocialLogin>
+        </Col>
+        <Col lg={8} md={6} sm={12}>
+        <img className='w-100' src={regi} alt="" />
+        </Col>
+      </Row>
+     
     </div>
   );
 };
